@@ -23,25 +23,33 @@ body {
 header {
     background: #35424a;
     color: #ffffff;
-    padding-top: 20px; /* Sedikit dikurangi */
-    padding-bottom: 10px; /* Sedikit dikurangi */
+    padding: 20px 0;
     min-height: 70px;
     border-bottom: #e8491d 3px solid;
 }
 
 .header-content {
-    display: flex; /* Menggunakan flexbox */
-    justify-content: space-between; /* Nama kiri, bahasa kanan */
-    align-items: center; /* Menyelaraskan vertikal */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Tambahkan agar elemen tidak terpotong di layar kecil */
 }
 
 header h1 {
     margin-bottom: 5px;
-    font-size: 2em; /* Sedikit lebih kecil jika perlu */
+    font-size: 2em;
+    text-align: center; /* Tambahkan agar rata tengah di layar kecil */
 }
 
 header p {
     font-size: 0.9em;
+    text-align: center; /* Tambahkan agar rata tengah di layar kecil */
+}
+
+.language-switcher {
+    display: flex;
+    gap: 10px; /* Jarak antar bahasa */
+    justify-content: center; /* Rata tengah */
 }
 
 .language-switcher a {
@@ -54,13 +62,12 @@ header p {
 }
 
 .language-switcher a.active {
-    background-color: #e8491d; /* Warna latar untuk bahasa aktif */
+    background-color: #e8491d;
 }
 
 .language-switcher a:not(.active):hover {
-    background-color: #555; /* Warna latar saat hover di bahasa non-aktif */
+    background-color: #555;
 }
-
 
 /* Navigasi */
 nav {
@@ -76,7 +83,7 @@ nav ul {
 }
 
 nav ul li {
-    display: inline;
+    display: inline-block; /* Gunakan inline-block agar lebih fleksibel */
     margin: 0 15px;
 }
 
@@ -102,7 +109,7 @@ section {
     padding: 25px;
     margin-bottom: 20px;
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 section h2 {
@@ -110,10 +117,11 @@ section h2 {
     margin-bottom: 15px;
     border-bottom: 1px solid #eee;
     padding-bottom: 10px;
+    text-align: center; /* Rata tengah untuk heading */
 }
 
 /* Styling Khusus Section */
-#tentang .profile-pic, #about .profile-pic { /* Terapkan ke ID indonesia & inggris */
+#tentang .profile-pic, #about .profile-pic {
     display: block;
     max-width: 150px;
     height: auto;
@@ -171,7 +179,6 @@ section h2 {
     text-decoration: underline;
 }
 
-
 /* Footer */
 footer {
     background: #35424a;
@@ -182,18 +189,18 @@ footer {
 }
 
 /* Responsive */
-@media(max-width: 768px){
+@media (max-width: 768px) {
     .container {
         width: 90%;
     }
 
     .header-content {
-        flex-direction: column; /* Tumpuk header di layar kecil */
+        flex-direction: column;
         text-align: center;
     }
 
     .language-switcher {
-        margin-top: 10px; /* Jarak antara nama dan pilihan bahasa */
+        margin-top: 10px;
     }
 
     nav ul li {
@@ -203,5 +210,9 @@ footer {
 
     header h1 {
         font-size: 1.8em;
+    }
+
+    section h2 {
+        font-size: 1.5em; /* Sesuaikan ukuran heading di layar kecil */
     }
 }
