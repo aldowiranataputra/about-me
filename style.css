@@ -1,0 +1,207 @@
+/* Reset CSS Dasar & Pengaturan Umum */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    max-width: 1100px;
+}
+
+/* Header */
+header {
+    background: #35424a;
+    color: #ffffff;
+    padding-top: 20px; /* Sedikit dikurangi */
+    padding-bottom: 10px; /* Sedikit dikurangi */
+    min-height: 70px;
+    border-bottom: #e8491d 3px solid;
+}
+
+.header-content {
+    display: flex; /* Menggunakan flexbox */
+    justify-content: space-between; /* Nama kiri, bahasa kanan */
+    align-items: center; /* Menyelaraskan vertikal */
+}
+
+header h1 {
+    margin-bottom: 5px;
+    font-size: 2em; /* Sedikit lebih kecil jika perlu */
+}
+
+header p {
+    font-size: 0.9em;
+}
+
+.language-switcher a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 8px;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+}
+
+.language-switcher a.active {
+    background-color: #e8491d; /* Warna latar untuk bahasa aktif */
+}
+
+.language-switcher a:not(.active):hover {
+    background-color: #555; /* Warna latar saat hover di bahasa non-aktif */
+}
+
+
+/* Navigasi */
+nav {
+    background: #ffffff;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    margin-bottom: 30px;
+}
+
+nav ul {
+    list-style: none;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav a {
+    color: #35424a;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px;
+}
+
+nav a:hover {
+    color: #e8491d;
+    border-bottom: 2px solid #e8491d;
+}
+
+/* Konten Utama & Section */
+main {
+    padding-bottom: 40px;
+}
+
+section {
+    background: #ffffff;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+section h2 {
+    color: #35424a;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* Styling Khusus Section */
+#tentang .profile-pic, #about .profile-pic { /* Terapkan ke ID indonesia & inggris */
+    display: block;
+    max-width: 150px;
+    height: auto;
+    border-radius: 50%;
+    margin: 0 auto 20px auto;
+    border: 3px solid #e8491d;
+}
+
+#keahlian ul, #skills ul {
+    list-style: disc;
+    padding-left: 20px;
+}
+
+#keahlian li, #skills li {
+    margin-bottom: 8px;
+}
+
+.proyek-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
+.proyek-item h3 {
+    color: #e8491d;
+    margin-bottom: 8px;
+}
+
+.proyek-item a {
+    color: #35424a;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.proyek-item a:hover {
+    text-decoration: underline;
+}
+
+#kontak ul, #contact ul {
+    list-style: none;
+}
+
+#kontak li, #contact li {
+    margin-bottom: 10px;
+}
+
+#kontak a, #contact a {
+    color: #e8491d;
+    text-decoration: none;
+}
+
+#kontak a:hover, #contact a:hover {
+    text-decoration: underline;
+}
+
+
+/* Footer */
+footer {
+    background: #35424a;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+/* Responsive */
+@media(max-width: 768px){
+    .container {
+        width: 90%;
+    }
+
+    .header-content {
+        flex-direction: column; /* Tumpuk header di layar kecil */
+        text-align: center;
+    }
+
+    .language-switcher {
+        margin-top: 10px; /* Jarak antara nama dan pilihan bahasa */
+    }
+
+    nav ul li {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    header h1 {
+        font-size: 1.8em;
+    }
+}
