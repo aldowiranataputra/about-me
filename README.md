@@ -1,1 +1,1 @@
-# about-me/© 2025 I Putu Aldo Wiranata Putra. All Rights Reserved.
+# about-me/© 2025 All Rights Reserved.
