@@ -3,206 +3,500 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio - I Putu Aldo Wiranata Putra</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Portfolio - I Putu Aldo Wiranata Putra</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* Animasi fade-in */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .nav-link {
+            color: #555;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link:hover {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Main Content */
+        main {
+            display: grid;
+            gap: 30px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 25px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: block;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            padding: 5px;
+        }
+
+        .skill-item, .experience-item, .education-item {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover, .experience-item:hover, .education-item:hover {
+            background: rgba(102, 126, 234, 0.2);
+            transform: translateX(5px);
+        }
+
+        .project-item {
+            background: rgba(118, 75, 162, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(118, 75, 162, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .project-item:hover {
+            background: rgba(118, 75, 162, 0.2);
+            transform: scale(1.02);
+        }
+
+        .project-item h3 {
+            color: #764ba2;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin: 5px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            color: white;
+        }
+
+        .contact-btn.linkedin:hover { background: #0077b5; }
+        .contact-btn.github:hover { background: #333; }
+        .contact-btn.instagram:hover { background: #e4405f; }
+        .contact-btn.cv:hover { background: #28a745; }
+
+        /* Footer */
+        footer {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Animations */
         .fade-in {
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
         }
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .card h2 {
+                font-size: 1.5rem;
+            }
+
+            .profile-image {
+                width: 120px;
+                height: 120px;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <header class="fade-in">
+            <h1>I Putu Aldo Wiranata Putra</h1>
+            <p>Computer Science Graduate | Web Developer | Digital Content Creator</p>
+        </header>
 
-    <header class="bg-primary text-white py-4">
-        <div class="container text-center">
-            <h1 class="fade-in">I Putu Aldo Wiranata Putra</h1>
-<!--             <p class="fade-in">I am I Putu Aldo Wiranata Putra, a Bachelor of Computer Science graduate from the Indonesian Institute of Business and Technology (INSTIKI) with a GPA of 3.52. I have a strong interest in applying technology to education and promoting local culture through digital media. I am a fast learner, highly adaptable, and capable of working collaboratively in dynamic environments. I am passionate about leveraging digital tools to create meaningful impact.</p> -->
-        </div>
-<!--         <div class="text-center mt-3">
-            <a href="index-id.html" class="btn btn-light btn-sm active">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg" alt="Indonesian Flag" class="img-fluid" style="width: 20px; vertical-align: middle;"> ID
-            </a>
-            <a href="index-en.html" class="btn btn-light btn-sm">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg" alt="English Flag" class="img-fluid" style="width: 20px; vertical-align: middle;"> EN
-            </a>
-        </div> -->
-    </header>
-
-    <nav class="bg-light py-2">
-        <div class="container">
-            <ul class="nav nav-pills justify-content-center">
-                 <li class="nav-item">
-                    <a class="nav-link" href="#About me">About me</a>
-                <li class="nav-item">
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#Education">Education</a>
-                <li class="nav-item">
-                    <a class="nav-link" href="#Skill">Skill</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#Experience">Experience</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#Project">Projects</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#Contact">Contact</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <main class="container my-5">
-        <section id="About me" class="mb-5 fade-in">
-            <div class="card shadow">
-                <div class="card-body">
-                    <h2 class="card-title text-center">About Me</h2>
-                    <img src="image/aldo.jpg" alt="Photo of I Putu Aldo Wiranata Putra" class="img-fluid rounded-circle mx-auto d-block my-3" style="width: 150px;">
-                    <p class="text-center">
-                        I am I Putu Aldo Wiranata Putra, a Bachelor of Computer Science graduate from the Indonesian Institute of Business and Technology (INSTIKI) with a GPA of 3.52. I have a strong interest in applying technology to education and promoting local culture through digital media. I am a fast learner, highly adaptable, and capable of working collaboratively in dynamic environments. I am passionate about leveraging digital tools to create meaningful impact.
-                    </p>
-                </div>
+        <nav class="fade-in">
+            <div class="nav-container">
+                <a href="#about" class="nav-link">About Me</a>
+                <a href="#education" class="nav-link">Education</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact</a>
             </div>
-        </section>
+        </nav>
 
-        <section id="Education" class="mb-5 fade-in">
-            <div class="card shadow">
-                <div class="card-body">
-                 <h2 class="card-title text-center">Education</h2>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Bachelor of Computer Science, Indonesian Institute of Business and Technology (INSTIKI), Bali Graduated in October 2024 GPA: 3.52 / 4.00. Leadership: Lead of Instiki Developer Clubs, Member of Google Developer Student Club (2023). Relevant Courses: Algorithms, Data Structures, Clean Code & Design Patterns, OOP, Databases, SEO, Project Management</li>
-                    </ul>
+        <main>
+            <section id="about" class="card fade-in">
+                <h2>About Me</h2>
+                <div style="width: 150px; height: 150px; background: linear-gradient(45deg, #667eea, #764ba2); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; font-weight: bold;">AP</div>
+                <img src="image/aldo.jpg" alt="Photo of I Putu Aldo Wiranata Putra" class="img-fluid rounded-circle mx-auto d-block my-3" style="width: 150px;">
+                <p style="text-align: center; font-size: 1.1rem; line-height: 1.8;">
+                    I am I Putu Aldo Wiranata Putra, a Bachelor of Computer Science graduate from the Indonesian Institute of Business and Technology (INSTIKI) with a GPA of 3.52. I have a strong interest in applying technology to education and promoting local culture through digital media. I am a fast learner, highly adaptable, and capable of working collaboratively in dynamic environments. I am passionate about leveraging digital tools to create meaningful impact.
+                </p>
+            </section>
+
+            <section id="education" class="card fade-in">
+                <h2>Education</h2>
+                <div class="education-item">
+                    <h3>Bachelor of Computer Science</h3>
+                    <p><strong>Indonesian Institute of Business and Technology (INSTIKI), Bali</strong></p>
+                    <p>Graduated: October 2024 | GPA: 3.52/4.00</p>
+                    <p><strong>Leadership:</strong> Lead of Instiki Developer Clubs, Member of Google Developer Student Club (2023)</p>
+                    <p><strong>Relevant Courses:</strong> Algorithms, Data Structures, Clean Code & Design Patterns, OOP, Databases, SEO, Project Management</p>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="Skill" class="mb-5 fade-in">
-            <div class="card shadow">
-                <div class="card-body">
-                 <h2 class="card-title text-center">Skill</h2>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">● Web Development: HTML & CSS (Advanced), WordPress (Content Management & Web Development)</li>
-                        <li class="list-group-item">● Design & Media: Canva (Graphic Design), Video Editing (Basic Level)</li>
-                        <li class="list-group-item">● Digital Skills: Web Performance Optimization, Web Accessibility Principles</li>
-                        <li class="list-group-item">● Productivity Tools: Microsoft Word, Excel, PowerPoint, Google Suite (Docs, Sheets, Slides)</li>
-                        <li class="list-group-item">● Languages: Balinese (Native), Indonesian (Native), English (Basic – Passive)</li>
-                    </ul>
+            <section id="skills" class="card fade-in">
+                <h2>Skills</h2>
+                <div class="skill-item">
+                    <h4><i class="fas fa-code"></i> Web Development</h4>
+                    <p>HTML & CSS (Advanced), WordPress (Content Management & Web Development)</p>
                 </div>
-            </div>
-        </section>
-
-        <section id="Experience" class="mb-5 fade-in">
-            <div class="card shadow">
-                <div class="card-body">
-                 <h2 class="card-title text-center">Experience</h2>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">● STB RUNATA Foundation – Managed academic systems and student administration processes)</li>
-                        <li class="list-group-item">● Galang Kasih Elementary & Kindergarten Foundation – Introduced Industry 4.0 tools to students and teachers; provided training in digital tools such as Google Forms</li>
-                        <li class="list-group-item">● Freelance & Personal Projects – Promoted Balinese culture via WordPress-based platforms; developed websites for local SMEs using HTML, CSS, and JavaScript</li>
-                    </ul>
+                <div class="skill-item">
+                    <h4><i class="fas fa-paint-brush"></i> Design & Media</h4>
+                    <p>Canva (Graphic Design), Video Editing (Basic Level)</p>
                 </div>
-            </div>
-        </section>
-
-       <section id="Project" class="mb-5 fade-in">
-            <div class="card shadow">
-                <div class="card-body">
-                    <h2 class="text-center">Featured Projects</h2>
-                    <div class="mb-4">
-                        <h3> Blogspot  </h3>
-                        <p>
-                            This is a Wordpress project, which I built using Wordpress. The main focus of this project is to promote the culture and customs of Bali.
-                        </p>
-                        <a href="https://aldowiranataputra.wordpress.com/" target="_blank" class="btn btn-primary btn-sm">View Demo</a>
-                        <!-- <a href="https://drive.google.com/drive/folders/1de86O4lTkejAO4LAsC0-rtRNCXSwGO2O?usp=sharing" target="_blank" class="btn btn-secondary btn-sm">View Code</a> -->
-                    </div>
-                    <div class="mb-4">
-                        <h3>We created an SME website to support the business’s digital presence.</h3>
-                        <p>
-                            We developed a website for a small and medium enterprise (SME) engaged in retail and smartphone repair services, located on Pasekan Street, Batubulan, Gianyar, Bali. This website is built using HTML, CSS, and JavaScript to provide an easy and accessible way for customers to find information about the products and services offered by the business.
-                        </p>
-                        <a href="https://aldowiranataputra.github.io/pricelist/" target="_blank" class="btn btn-primary btn-sm">View Demo</a>
-                        <a href="https://github.com/aldowiranataputra/pricelist.git" target="_blank" class="btn btn-secondary btn-sm">View Code</a>
-                    </div>
-                    <div class="mb-4">
-                        <h3>🎬 Promotional Video</h3>
-                        <p>
-                            This video was edited with a focus on delivering the brand’s message clearly and effectively. I used smooth transitions, motion graphics, and consistent color grading to match the brand's visual identity and create a professional impression.
-                        </p>
-                        <a href="https://youtu.be/OfKiRxS0Uak?si=CqhQ9s1CDewPxz7h" target="_blank" class="btn btn-primary btn-sm">View Video</a>
-                        <!-- <a href="https://github.com/aldowiranataputra/pricelist.git" target="_blank" class="btn btn-secondary btn-sm">View Code</a> -->
-                        <a href="https://youtu.be/lF_5l0-hGuI?si=46aMJAXo7duTO44v" target="_blank" class="btn btn-primary btn-sm">View Video</a>
-                    </div>
-                    <div class="mb-4">
-                        <h3>🎞️ Documentary</h3>
-                        <p>
-                            This documentary project was edited with a strong narrative approach, preserving the chronological flow of the story and incorporating supporting footage and subtitles to strengthen the message.
-                        </p>
-                        <a href="https://youtu.be/-fzYVvfEz6w?si=6bxmcHpF7y0Z-a_D" target="_blank" class="btn btn-primary btn-sm">View Video</a>
-                        <!-- <a href="https://github.com/aldowiranataputra/pricelist.git" target="_blank" class="btn btn-secondary btn-sm">View Code</a> -->
-                    </div>
-                    </div> 
+                <div class="skill-item">
+                    <h4><i class="fas fa-rocket"></i> Digital Skills</h4>
+                    <p>Web Performance Optimization, Web Accessibility Principles</p>
                 </div>
-            </div>
-        </section>
-
-        <section id="Contact" class="mb-5 fade-in">
-            <div class="card shadow">
-                <div class="card-body">
-                    <h2 class="card-title text-center">Contact</h2>
-                    <p class="text-center">If you're interested in discussing or collaborating, feel free to contact me via: <a href="mailto:iputualdowiranataputra@gmail.com"><strong>iputualdowiranataputra@gmail.com</strong></a></p>
-                    <div class="d-flex justify-content-center flex-wrap gap-3">
-                        <a href="https://drive.google.com/file/d/1mElISvggmfsUEExSOgsFgmXYy149mncm/view?usp=sharing" target="_blank" class="btn btn-outline-success btn-sm">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/PDF_file_icon.svg" alt="PDF Icon" class="img-fluid" style="width: 20px; vertical-align: middle;"> Download CV
-                        </a>
-                        <a href="https://www.linkedin.com/in/aldowiranataputra" target="_blank" class="btn btn-outline-primary btn-sm">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn Icon" class="img-fluid" style="width: 20px; vertical-align: middle;"> LinkedIn
-                        </a>
-                        <a href="https://github.com/aldowiranataputra" target="_blank" class="btn btn-outline-dark btn-sm">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub Icon" class="img-fluid" style="width: 20px; vertical-align: middle;"> GitHub
-                        </a>
-                        <a href="https://www.instagram.com/aldowiranataputra" target="_blank" class="btn btn-outline-danger btn-sm">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Icon" class="img-fluid" style="width: 20px; vertical-align: middle;"> Instagram
-                        </a>
-                    </div>
+                <div class="skill-item">
+                    <h4><i class="fas fa-tools"></i> Productivity Tools</h4>
+                    <p>Microsoft Word, Excel, PowerPoint, Google Suite (Docs, Sheets, Slides)</p>
                 </div>
-            </div>
-        </section>
-    </main>
+                <div class="skill-item">
+                    <h4><i class="fas fa-language"></i> Languages</h4>
+                    <p>Balinese (Native), Indonesian (Native), English (Basic – Passive)</p>
+                </div>
+            </section>
 
-    <footer class="bg-primary text-white text-center py-3 fade-in">
-        <p>&copy; 2025 I Putu Aldo Wiranata Putra. All Rights Reserved.</p>
-    </footer>
+            <section id="experience" class="card fade-in">
+                <h2>Experience</h2>
+                <div class="experience-item">
+                    <h4>STB RUNATA Foundation</h4>
+                    <p>Managed academic systems and student administration processes</p>
+                </div>
+                <div class="experience-item">
+                    <h4>Galang Kasih Elementary & Kindergarten Foundation</h4>
+                    <p>Introduced Industry 4.0 tools to students and teachers; provided training in digital tools such as Google Forms</p>
+                </div>
+                <div class="experience-item">
+                    <h4>Freelance & Personal Projects</h4>
+                    <p>Promoted Balinese culture via WordPress-based platforms; developed websites for local SMEs using HTML, CSS, and JavaScript</p>
+                </div>
+            </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+            <section id="projects" class="card fade-in">
+                <h2>Featured Projects</h2>
+                
+                <div class="project-item">
+                    <h3>🌐 Cultural Blog</h3>
+                    <p>This is a WordPress project focused on promoting the culture and customs of Bali through digital media.</p>
+                    <a href="https://aldowiranataputra.wordpress.com/" target="_blank" class="btn btn-primary">
+                        <i class="fas fa-external-link-alt"></i> View Demo
+                    </a>
+                </div>
+
+                <div class="project-item">
+                    <h3>🏪 SME Website</h3>
+                    <p>We developed a website for a small and medium enterprise (SME) engaged in retail and smartphone repair services, located on Pasekan Street, Batubulan, Gianyar, Bali. Built using HTML, CSS, and JavaScript.</p>
+                    <a href="https://aldowiranataputra.github.io/pricelist/" target="_blank" class="btn btn-primary">
+                        <i class="fas fa-external-link-alt"></i> View Demo
+                    </a>
+                    <a href="https://github.com/aldowiranataputra/pricelist.git" target="_blank" class="btn btn-secondary">
+                        <i class="fab fa-github"></i> View Code
+                    </a>
+                </div>
+
+                <div class="project-item">
+                    <h3>🎬 Promotional Videos</h3>
+                    <p>Video editing projects with focus on delivering brand messages clearly and effectively using smooth transitions, motion graphics, and consistent color grading.</p>
+                    <a href="https://youtu.be/OfKiRxS0Uak?si=CqhQ9s1CDewPxz7h" target="_blank" class="btn btn-primary">
+                        <i class="fab fa-youtube"></i> View Video 1
+                    </a>
+                    <a href="https://youtu.be/lF_5l0-hGuI?si=46aMJAXo7duTO44v" target="_blank" class="btn btn-primary">
+                        <i class="fab fa-youtube"></i> View Video 2
+                    </a>
+                </div>
+
+                <div class="project-item">
+                    <h3>🎞️ Documentary</h3>
+                    <p>Documentary project edited with a strong narrative approach, preserving the chronological flow of the story and incorporating supporting footage and subtitles.</p>
+                    <a href="https://youtu.be/-fzYVvfEz6w?si=6bxmcHpF7y0Z-a_D" target="_blank" class="btn btn-primary">
+                        <i class="fab fa-youtube"></i> View Documentary
+                    </a>
+                </div>
+            </section>
+
+            <section id="contact" class="card fade-in">
+                <h2>Contact</h2>
+                <p style="text-align: center; font-size: 1.1rem; margin-bottom: 20px;">
+                    If you're interested in discussing or collaborating, feel free to contact me via: 
+                    <a href="mailto:iputualdowiranataputra@gmail.com" style="color: #667eea; font-weight: bold;">iputualdowiranataputra@gmail.com</a>
+                </p>
+                
+                <div class="contact-buttons">
+                    <a href="https://drive.google.com/file/d/1mElISvggmfsUEExSOgsFgmXYy149mncm/view?usp=sharing" target="_blank" class="contact-btn cv">
+                        <i class="fas fa-file-pdf"></i> Download CV
+                    </a>
+                    <a href="https://www.linkedin.com/in/aldowiranataputra" target="_blank" class="contact-btn linkedin">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                    <a href="https://github.com/aldowiranataputra" target="_blank" class="contact-btn github">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                    <a href="https://www.instagram.com/aldowiranataputra" target="_blank" class="contact-btn instagram">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <footer class="fade-in">
+            <p>&copy; 2025 I Putu Aldo Wiranata Putra. All Rights Reserved.</p>
+        </footer>
+    </div>
+
     <script>
-        // Animasi fade-in saat halaman dimuat
-        document.addEventListener("DOMContentLoaded", () => {
-            const fadeInElements = document.querySelectorAll(".fade-in");
-            fadeInElements.forEach(el => {
-                setTimeout(() => el.classList.add("visible"), 200);
-            });
-        });
-
         // Smooth scroll untuk navigasi
-        document.querySelectorAll('a.nav-link').forEach(anchor => {
+        document.querySelectorAll('.nav-link').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href').substring(1);
                 const targetElement = document.getElementById(targetId);
                 if (targetElement) {
+                    const headerOffset = 80;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
                     window.scrollTo({
-                        top: targetElement.offsetTop - 70,
+                        top: offsetPosition,
                         behavior: 'smooth'
                     });
+                }
+            });
+        });
+
+        // Intersection Observer untuk animasi fade-in
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = '0.1s';
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.card, header, nav, footer').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Active navigation link
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section[id]');
+            
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                if (sectionTop <= 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
                 }
             });
         });
