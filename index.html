@@ -26,6 +26,42 @@
             padding: 20px;
         }
 
+        /* Language Toggle */
+        .language-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            color: #666;
+        }
+
+        .lang-btn.active {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .lang-btn:hover:not(.active) {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+        }
+
         /* Header */
         header {
             background: rgba(255, 255, 255, 0.95);
@@ -236,6 +272,15 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
+        /* Language Specific Content */
+        .lang-content {
+            display: none;
+        }
+
+        .lang-content.active {
+            display: block;
+        }
+
         /* Animations */
         .fade-in {
             opacity: 0;
@@ -273,6 +318,11 @@
                 flex-direction: column;
                 align-items: center;
             }
+
+            .language-toggle {
+                top: 10px;
+                right: 10px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -292,101 +342,279 @@
     </style>
 </head>
 <body>
+    <!-- Language Toggle -->
+    <div class="language-toggle">
+        <button class="lang-btn active" onclick="switchLanguage('id')">ID</button>
+        <button class="lang-btn" onclick="switchLanguage('en')">EN</button>
+    </div>
+    <script>
+        function switchLanguage(lang) {
+            // Toggle content
+            document.getElementById('content-id').classList.toggle('active', lang === 'id');
+            document.getElementById('content-en').classList.toggle('active', lang === 'en');
+            // Toggle button active state
+            var btns = document.querySelectorAll('.lang-btn');
+            btns.forEach(function(btn) {
+                btn.classList.remove('active');
+            });
+            if (lang === 'id') {
+                btns[0].classList.add('active');
+            } else {
+                btns[1].classList.add('active');
+            }
+        }
+    </script>
+
     <div class="container">
-        <header class="fade-in">
-            <h1>I Putu Aldo Wiranata Putra</h1>
-            <p>Computer Science Graduate | Web Developer | Digital Content Creator</p>
-        </header>
+        <!-- Indonesian Content -->
+        <div id="content-id" class="lang-content active">
+            <header class="fade-in">
+                <h1>I Putu Aldo Wiranata Putra</h1>
+                <p>Lulusan Ilmu Komputer | Web Developer | Konten Kreator Digital</p>
+            </header>
 
-        <nav class="fade-in">
-            <div class="nav-container">
-                <a href="#about" class="nav-link">About Me</a>
-                <a href="#education" class="nav-link">Education</a>
-                <a href="#skills" class="nav-link">Skills</a>
-                <a href="#experience" class="nav-link">Experience</a>
-                <a href="#projects" class="nav-link">Projects</a>
-                <a href="#contact" class="nav-link">Contact</a>
-            </div>
-        </nav>
+            <nav class="fade-in">
+                <div class="nav-container">
+                    <a href="#about" class="nav-link">Tentang Saya</a>
+                    <a href="#education" class="nav-link">Pendidikan</a>
+                    <a href="#skills" class="nav-link">Keahlian</a>
+                    <a href="#experience" class="nav-link">Pengalaman</a>
+                    <a href="#projects" class="nav-link">Proyek</a>
+                    <a href="#contact" class="nav-link">Kontak</a>
+                </div>
+            </nav>
 
-        <main>
-            <section id="about" class="card fade-in">
-                <h2>About Me</h2>
-                <div style="width: 150px; height: 150px; background: linear-gradient(45deg, #667eea, #764ba2); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; font-weight: bold;">AP</div>
-                <p style="text-align: center; font-size: 1.1rem; line-height: 1.8;">
-                    I am I Putu Aldo Wiranata Putra, a Bachelor of Computer Science graduate from the Indonesian Institute of Business and Technology (INSTIKI) with a GPA of 3.52. I have a strong interest in applying technology to education and promoting local culture through digital media. I am a fast learner, highly adaptable, and capable of working collaboratively in dynamic environments. I am passionate about leveraging digital tools to create meaningful impact.
-                </p>
-            </section>
+            <main>
+                <section id="about" class="card fade-in">
+                    <h2>Tentang Saya</h2>
+                    <div style="width: 150px; height: 150px; background: linear-gradient(45deg, #667eea, #764ba2); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; font-weight: bold;">AP</div>
+                    <p style="text-align: center; font-size: 1.1rem; line-height: 1.8;">
+                        Saya adalah I Putu Aldo Wiranata Putra, lulusan Sarjana Ilmu Komputer dari Institut Sains dan Teknologi Bisnis Indonesia (INSTIKI) dengan IPK 3,52. Saya memiliki minat yang kuat dalam menerapkan teknologi untuk pendidikan dan mempromosikan budaya lokal melalui media digital. Saya adalah pembelajar yang cepat, sangat adaptif, dan mampu bekerja secara kolaboratif dalam lingkungan yang dinamis. Saya bersemangat memanfaatkan alat digital untuk menciptakan dampak yang bermakna.
+                    </p>
+                </section>
 
-            <section id="education" class="card fade-in">
-                <h2>Education</h2>
-                <div class="education-item">
-                    <h3>Bachelor of Computer Science</h3>
-                    <p><strong>Indonesian Institute of Business and Technology (INSTIKI), Bali</strong></p>
-                    <p>Graduated: October 2024 | GPA: 3.52/4.00</p>
-                    <p><strong>Leadership:</strong> Lead of Instiki Developer Clubs, Member of Google Developer Student Club (2023)</p>
-                    <p><strong>Relevant Courses:</strong> Algorithms, Data Structures, Clean Code & Design Patterns, OOP, Databases, SEO, Project Management</p>
-                </div>
-            </section>
+                <section id="education" class="card fade-in">
+                    <h2>Pendidikan</h2>
+                    <div class="education-item">
+                        <h3>Sarjana Ilmu Komputer</h3>
+                        <p><strong>Institut Sains dan Teknologi Bisnis Indonesia (INSTIKI), Bali</strong></p>
+                        <p>Lulus: Oktober 2024 | IPK: 3,52/4,00</p>
+                        <p><strong>Kepemimpinan:</strong> Ketua Instiki Developer Clubs, Anggota Google Developer Student Club (2023)</p>
+                        <p><strong>Mata Kuliah Relevan:</strong> Algoritma, Struktur Data, Clean Code & Design Patterns, OOP, Database, SEO, Manajemen Proyek</p>
+                    </div>
+                </section>
 
-            <section id="skills" class="card fade-in">
-                <h2>Skills</h2>
-                <div class="skill-item">
-                    <h4><i class="fas fa-code"></i> Web Development</h4>
-                    <p>HTML & CSS (Advanced), WordPress (Content Management & Web Development)</p>
-                </div>
-                <div class="skill-item">
-                    <h4><i class="fas fa-paint-brush"></i> Design & Media</h4>
-                    <p>Canva (Graphic Design), Video Editing (Basic Level)</p>
-                </div>
-                <div class="skill-item">
-                    <h4><i class="fas fa-rocket"></i> Digital Skills</h4>
-                    <p>Web Performance Optimization, Web Accessibility Principles</p>
-                </div>
-                <div class="skill-item">
-                    <h4><i class="fas fa-tools"></i> Productivity Tools</h4>
-                    <p>Microsoft Word, Excel, PowerPoint, Google Suite (Docs, Sheets, Slides)</p>
-                </div>
-                <div class="skill-item">
-                    <h4><i class="fas fa-language"></i> Languages</h4>
-                    <p>Balinese (Native), Indonesian (Native), English (Basic – Passive)</p>
-                </div>
-            </section>
+                <section id="skills" class="card fade-in">
+                    <h2>Keahlian</h2>
+                    <div class="skill-item">
+                        <h4><i class="fas fa-code"></i> Pengembangan Web</h4>
+                        <p>HTML & CSS (Tingkat Lanjut), WordPress (Manajemen Konten & Pengembangan Web)</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4><i class="fas fa-paint-brush"></i> Desain & Media</h4>
+                        <p>Canva (Desain Grafis), Video Editing (Tingkat Dasar)</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4><i class="fas fa-rocket"></i> Keahlian Digital</h4>
+                        <p>Optimisasi Performa Web, Prinsip Aksesibilitas Web</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4><i class="fas fa-tools"></i> Alat Produktivitas</h4>
+                        <p>Microsoft Word, Excel, PowerPoint, Google Suite (Docs, Sheets, Slides)</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4><i class="fas fa-language"></i> Bahasa</h4>
+                        <p>Bahasa Bali (Asli), Bahasa Indonesia (Asli), Bahasa Inggris (Dasar – Pasif)</p>
+                    </div>
+                </section>
 
-            <section id="experience" class="card fade-in">
-                <h2>Experience</h2>
-                <div class="experience-item">
-                    <h4>STB RUNATA Foundation</h4>
-                    <p>Managed academic systems and student administration processes</p>
-                </div>
-                <div class="experience-item">
-                    <h4>Galang Kasih Elementary & Kindergarten Foundation</h4>
-                    <p>Introduced Industry 4.0 tools to students and teachers; provided training in digital tools such as Google Forms</p>
-                </div>
-                <div class="experience-item">
-                    <h4>IT Support Specialist at The Meru Sanur</h4>
-                    <p>Job Description:
-                        Responsible for ensuring the smooth operation of information technology systems, including the management of hardware, software, and network infrastructure. This role plays a key part in delivering technical solutions, enforcing data security protocols, and providing user support to resolve IT-related issues efficiently. </p>
-                        <strong>Roles and Responsibilities:</strong> Provide effective and responsive technical support to users through various communication channels. Diagnose and resolve issues related to hardware, software, and network systems. Manage user accounts, access controls, and enforce network security policies. Conduct user training and awareness on IT procedures and data security protocols. Perform regular system maintenance, updates, and optimization to ensure peak performance. Execute data backup and recovery processes to prevent data loss and ensure business continuity.
-                </div>
-                <div class="experience-item">
-                    <h4>Freelance & Personal Projects</h4>
-                    <p>Promoted Balinese culture via WordPress-based platforms; developed websites for local SMEs using HTML, CSS, and JavaScript</p>
-                </div>
-            </section>
+                <section id="experience" class="card fade-in">
+                    <h2>Pengalaman</h2>
+                    <div class="experience-item">
+                        <h4>Yayasan STB RUNATA</h4>
+                        <p>Mengelola sistem akademik dan proses administrasi siswa</p>
+                    </div>
+                    <div class="experience-item">
+                        <h4>Yayasan SD & TK Galang Kasih</h4>
+                        <p>Memperkenalkan alat Industri 4.0 kepada siswa dan guru; memberikan pelatihan alat digital seperti Google Forms</p>
+                    </div>
+                    <div class="experience-item">
+                        <h4>Spesialis Dukungan IT di The Meru Sanur</h4>
+                        <p>Deskripsi Pekerjaan: Bertanggung jawab memastikan kelancaran operasi sistem teknologi informasi, termasuk pengelolaan infrastruktur perangkat keras, perangkat lunak, dan jaringan. Peran ini memainkan bagian penting dalam memberikan solusi teknis, menerapkan protokol keamanan data, dan memberikan dukungan pengguna untuk menyelesaikan masalah terkait IT secara efisien.</p>
+                        <p><strong>Peran dan Tanggung Jawab:</strong> Memberikan dukungan teknis yang efektif dan responsif kepada pengguna melalui berbagai saluran komunikasi. Mendiagnosis dan menyelesaikan masalah terkait sistem perangkat keras, perangkat lunak, dan jaringan. Mengelola akun pengguna, kontrol akses, dan menerapkan kebijakan keamanan jaringan. Melakukan pelatihan pengguna dan kesadaran tentang prosedur IT dan protokol keamanan data. Melakukan pemeliharaan sistem rutin, pembaruan, dan optimisasi untuk memastikan kinerja puncak. Menjalankan proses pencadangan dan pemulihan data untuk mencegah kehilangan data dan memastikan kontinuitas bisnis.</p>
+                    </div>
+                    <div class="experience-item">
+                        <h4>Freelance & Proyek Pribadi</h4>
+                        <p>Mempromosikan budaya Bali melalui platform berbasis WordPress; mengembangkan website untuk UKM lokal menggunakan HTML, CSS, dan JavaScript</p>
+                    </div>
+                </section>
 
-            <section id="projects" class="card fade-in">
-                <h2>Featured Projects</h2>
-                
-                <div class="project-item">
-                    <h3>🌐 Cultural Blog</h3>
-                    <p>This is a WordPress project focused on promoting the culture and customs of Bali through digital media.</p>
-                    <a href="https://aldowiranataputra.wordpress.com/" target="_blank" class="btn btn-primary">
-                        <i class="fas fa-external-link-alt"></i> View Demo
-                    </a>
-                </div>
+                <section id="projects" class="card fade-in">
+                    <h2>Proyek Unggulan</h2>
+                    
+                    <div class="project-item">
+                        <h3>🌐 Blog Budaya</h3>
+                        <p>Ini adalah proyek WordPress yang fokus pada promosi budaya dan adat istiadat Bali melalui media digital.</p>
+                        <a href="https://aldowiranataputra.wordpress.com/" target="_blank" class="btn btn-primary">
+                            <i class="fas fa-external-link-alt"></i> Lihat Demo
+                        </a>
+                    </div>
 
-                <div class="project-item">
+                    <div class="project-item">
+                        <h3>🏪 Website UKM</h3>
+                        <p>Kami mengembangkan website untuk usaha kecil dan menengah (UKM) yang bergerak di bidang ritel dan layanan perbaikan smartphone, berlokasi di Jalan Pasekan, Batubulan, Gianyar, Bali. Dibangun menggunakan HTML, CSS, dan JavaScript.</p>
+                        <a href="https://aldowiranataputra.github.io/pricelist/" target="_blank" class="btn btn-primary">
+                            <i class="fas fa-external-link-alt"></i> Lihat Demo
+                        </a>
+                        <a href="https://github.com/aldowiranataputra/pricelist.git" target="_blank" class="btn btn-secondary">
+                            <i class="fab fa-github"></i> Lihat Kode
+                        </a>
+                    </div>
+
+                    <div class="project-item">
+                        <h3>🎬 Video Promosi</h3>
+                        <p>Proyek editing video dengan fokus menyampaikan pesan brand secara jelas dan efektif menggunakan transisi halus, motion graphics, dan color grading yang konsisten.</p>
+                        <a href="https://youtu.be/OfKiRxS0Uak?si=CqhQ9s1CDewPxz7h" target="_blank" class="btn btn-primary">
+                            <i class="fab fa-youtube"></i> Lihat Video 1
+                        </a>
+                        <a href="https://youtu.be/lF_5l0-hGuI?si=46aMJAXo7duTO44v" target="_blank" class="btn btn-primary">
+                            <i class="fab fa-youtube"></i> Lihat Video 2
+                        </a>
+                    </div>
+
+                    <div class="project-item">
+                        <h3>🎞️ Dokumenter</h3>
+                        <p>Proyek dokumenter yang diedit dengan pendekatan naratif yang kuat, mempertahankan alur kronologis cerita dan menggabungkan footage pendukung serta subtitle.</p>
+                        <a href="https://youtu.be/-fzYVvfEz6w?si=6bxmcHpF7y0Z-a_D" target="_blank" class="btn btn-primary">
+                            <i class="fab fa-youtube"></i> Lihat Dokumenter
+                        </a>
+                    </div>
+                </section>
+
+                <section id="contact" class="card fade-in">
+                    <h2>Kontak</h2>
+                    <p style="text-align: center; font-size: 1.1rem; margin-bottom: 20px;">
+                        Jika Anda tertarik untuk berdiskusi atau berkolaborasi, jangan ragu untuk menghubungi saya melalui: 
+                        <a href="mailto:iputualdowiranataputra@gmail.com" style="color: #667eea; font-weight: bold;">iputualdowiranataputra@gmail.com</a>
+                    </p>
+                    
+                    <div class="contact-buttons">
+                        <a href="https://drive.google.com/file/d/1mElISvggmfsUEExSOgsFgmXYy149mncm/view?usp=sharing" target="_blank" class="contact-btn cv">
+                            <i class="fas fa-file-pdf"></i> Download CV
+                        </a>
+                        <a href="https://www.linkedin.com/in/aldowiranataputra" target="_blank" class="contact-btn linkedin">
+                            <i class="fab fa-linkedin"></i> LinkedIn
+                        </a>
+                        <a href="https://github.com/aldowiranataputra" target="_blank" class="contact-btn github">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                        <a href="https://www.instagram.com/aldowiranataputra" target="_blank" class="contact-btn instagram">
+                            <i class="fab fa-instagram"></i> Instagram
+                        </a>
+                    </div>
+                </section>
+            </main>
+
+            <footer class="fade-in">
+                <p>&copy; 2025 I Putu Aldo Wiranata Putra. Semua Hak Dilindungi.</p>
+            </footer>
+        </div>
+
+        <!-- English Content -->
+        <div id="content-en" class="lang-content">
+            <header class="fade-in">
+                <h1>I Putu Aldo Wiranata Putra</h1>
+                <p>Computer Science Graduate | Web Developer | Digital Content Creator</p>
+            </header>
+
+            <nav class="fade-in">
+                <div class="nav-container">
+                    <a href="#about" class="nav-link">About Me</a>
+                    <a href="#education" class="nav-link">Education</a>
+                    <a href="#skills" class="nav-link">Skills</a>
+                    <a href="#experience" class="nav-link">Experience</a>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+            </nav>
+
+            <main>
+                <section id="about" class="card fade-in">
+                    <h2>About Me</h2>
+                    <div style="width: 150px; height: 150px; background: linear-gradient(45deg, #667eea, #764ba2); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; font-weight: bold;">AP</div>
+                    <p style="text-align: center; font-size: 1.1rem; line-height: 1.8;">
+                        I am I Putu Aldo Wiranata Putra, a Bachelor of Computer Science graduate from the Indonesian Institute of Business and Technology (INSTIKI) with a GPA of 3.52. I have a strong interest in applying technology to education and promoting local culture through digital media. I am a fast learner, highly adaptable, and capable of working collaboratively in dynamic environments. I am passionate about leveraging digital tools to create meaningful impact.
+                    </p>
+                </section>
+
+                <section id="education" class="card fade-in">
+                    <h2>Education</h2>
+                    <div class="education-item">
+                        <h3>Bachelor of Computer Science</h3>
+                        <p><strong>Indonesian Institute of Business and Technology (INSTIKI), Bali</strong></p>
+                        <p>Graduated: October 2024 | GPA: 3.52/4.00</p>
+                        <p><strong>Leadership:</strong> Lead of Instiki Developer Clubs, Member of Google Developer Student Club (2023)</p>
+                        <p><strong>Relevant Courses:</strong> Algorithms, Data Structures, Clean Code & Design Patterns, OOP, Databases, SEO, Project Management</p>
+                    </div>
+                </section>
+
+                <section id="skills" class="card fade-in">
+                    <h2>Skills</h2>
+                    <div class="skill-item">
+                        <h4><i class="fas fa-code"></i> Web Development</h4>
+                        <p>HTML & CSS (Advanced), WordPress (Content Management & Web Development)</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4><i class="fas fa-paint-brush"></i> Design & Media</h4>
+                        <p>Canva (Graphic Design), Video Editing (Basic Level)</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4><i class="fas fa-rocket"></i> Digital Skills</h4>
+                        <p>Web Performance Optimization, Web Accessibility Principles</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4><i class="fas fa-tools"></i> Productivity Tools</h4>
+                        <p>Microsoft Word, Excel, PowerPoint, Google Suite (Docs, Sheets, Slides)</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4><i class="fas fa-language"></i> Languages</h4>
+                        <p>Balinese (Native), Indonesian (Native), English (Basic – Passive)</p>
+                    </div>
+                </section>
+
+                <section id="experience" class="card fade-in">
+                    <h2>Experience</h2>
+                    <div class="experience-item">
+                        <h4>STB RUNATA Foundation</h4>
+                        <p>Managed academic systems and student administration processes</p>
+                    </div>
+                    <div class="experience-item">
+                        <h4>Galang Kasih Elementary & Kindergarten Foundation</h4>
+                        <p>Introduced Industry 4.0 tools to students and teachers; provided training in digital tools such as Google Forms</p>
+                    </div>
+                    <div class="experience-item">
+                        <h4>IT Support Specialist at The Meru Sanur</h4>
+                        <p>Job Description: Responsible for ensuring the smooth operation of information technology systems, including the management of hardware, software, and network infrastructure. This role plays a key part in delivering technical solutions, enforcing data security protocols, and providing user support to resolve IT-related issues efficiently.</p>
+                        <p><strong>Roles and Responsibilities:</strong> Provide effective and responsive technical support to users through various communication channels. Diagnose and resolve issues related to hardware, software, and network systems. Manage user accounts, access controls, and enforce network security policies. Conduct user training and awareness on IT procedures and data security protocols. Perform regular system maintenance, updates, and optimization to ensure peak performance. Execute data backup and recovery processes to prevent data loss and ensure business continuity.</p>
+                    </div>
+                    <div class="experience-item">
+                        <h4>Freelance & Personal Projects</h4>
+                        <p>Promoted Balinese culture via WordPress-based platforms; developed websites for local SMEs using HTML, CSS, and JavaScript</p>
+                    </div>
+                </section>
+
+                <section id="projects" class="card fade-in">
+                    <h2>Featured Projects</h2>
+                    
+                    <div class="project-item">
+                        <h3>🌐 Cultural Blog</h3>
+                        <p>This is a WordPress project focused on promoting the culture and customs of Bali through digital media.</p>
+                        <a href="https://aldowiranataputra.wordpress.com/" target="_blank" class="btn btn-primary">
+                            <i class="fas fa-external-link-alt"></i> View Demo
+                        </a>
+                    </div>
+
+                    <div class="project-item">
                     <h3>🏪 SME Website</h3>
                     <p>We developed a website for a small and medium enterprise (SME) engaged in retail and smartphone repair services, located on Pasekan Street, Batubulan, Gianyar, Bali. Built using HTML, CSS, and JavaScript.</p>
                     <a href="https://aldowiranataputra.github.io/pricelist/" target="_blank" class="btn btn-primary">
